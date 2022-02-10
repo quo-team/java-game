@@ -358,9 +358,7 @@ public class Main extends Application {
 			if (dimensions.get(y) != 0) {
 				lapomme.setY(dimensions.get(y) - 25);
 			} else {
-
 				lapomme.setY(dimensions.get(y) + 25);
-
 			}
 			if (dimensions.get(x) != 600) {
 				lapomme.setX(dimensions.get(x) + 15);
