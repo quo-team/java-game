@@ -40,7 +40,7 @@ public class Main extends Application {
 		try {
 
 			AnchorPane root = new AnchorPane();
-			Text TextPommeMangee = new Text("pomme mang�e : 0");
+			Text TextPommeMangee = new Text("pomme mangée : 0");
 			Text TextGameOver = new Text("GAME OVER");
 			TextPommeMangee.setX(10);
 			TextPommeMangee.setY(25);
