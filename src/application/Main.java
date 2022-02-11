@@ -40,7 +40,7 @@ public class Main extends Application {
 		try {
 
 			AnchorPane root = new AnchorPane();
-			Text TextPommeMangee = new Text("pomme mangée : 0");
+			Text TextPommeMangee = new Text("pomme mangï¿½e : 0");
 			Text TextGameOver = new Text("GAME OVER");
 			TextPommeMangee.setX(10);
 			TextPommeMangee.setY(25);
@@ -52,7 +52,7 @@ public class Main extends Application {
 
 			TextGameOver.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
 
-			// génération du terrain
+			// gï¿½nï¿½ration du terrain
 			int decalageX = 0;
 			int decalageY = 0;
 			dimensions.add(decalageY);
@@ -98,7 +98,7 @@ public class Main extends Application {
 			primaryStage.setScene(scene);
 			primaryStage.show();
 
-			// création de la pomme
+			// crï¿½ation de la pomme
 			Pomme lapomme = new Pomme();
 			changerPlacerPomme(dimensions, lapomme, root, serpent);
 			root.getChildren().add(lapomme);
@@ -107,6 +107,7 @@ public class Main extends Application {
 			
 
 			scene.setOnKeyPressed(e -> {
+
 
 				gameOver = false;
 				TextGameOver.setVisible(false);
@@ -122,7 +123,7 @@ public class Main extends Application {
 				boolean trouvX = false;
 				boolean trouvY = false;
 
-				if (e.getCode() == KeyCode.Z && latete.getDirection() != "bas") {
+				if (e.getCode() == KeyCode.UP && latete.getDirection() != "bas") {
 
 					for (int i : dimensions) {
 
@@ -153,7 +154,7 @@ public class Main extends Application {
 
 				}
 
-				if (e.getCode() == KeyCode.Q && latete.getDirection() != "droite") {
+				if (e.getCode() == KeyCode.LEFT && latete.getDirection() != "droite") {
 
 					for (int i : dimensions) {
 
@@ -183,7 +184,7 @@ public class Main extends Application {
 					latete.setProchainY(prochainY);
 				}
 
-				if (e.getCode() == KeyCode.S && latete.getDirection() != "haut") {
+				if (e.getCode() == KeyCode.DOWN && latete.getDirection() != "haut") {
 
 					for (int i : dimensions) {
 
@@ -213,7 +214,7 @@ public class Main extends Application {
 					latete.setProchainY(prochainY);
 				}
 
-				if (e.getCode() == KeyCode.D && latete.getDirection() != "gauche") {
+				if (e.getCode() == KeyCode.RIGHT && latete.getDirection() != "gauche") {
 
 					for (int i : dimensions) {
 
@@ -283,9 +284,9 @@ public class Main extends Application {
 								changerPlacerPomme(dimensions, lapomme, root, serpent);
 								pommeMangee++;
 								if (pommeMangee > 1) {
-									TextPommeMangee.setText("pommes mangées : " + pommeMangee);
+									TextPommeMangee.setText("pommes mangï¿½es : " + pommeMangee);
 								} else {
-									TextPommeMangee.setText("pomme mangée : " + pommeMangee);
+									TextPommeMangee.setText("pomme mangï¿½e : " + pommeMangee);
 								}
 								agrandirSerpent = true;
 								}
@@ -295,7 +296,7 @@ public class Main extends Application {
 							// si la tete touche le mur
 
 						} else {
-							// définir l'historique de déplacement
+							// dï¿½finir l'historique de dï¿½placement
 							if (mc.getNumeroDirection() < latete.getHistoriqueX().size()) {
 								if (mc.getX() == latete.getHistoriqueX().get(mc.getNumeroDirection())
 										&& mc.getY() == latete.getHistoriqueY().get(mc.getNumeroDirection())) {
@@ -377,7 +378,7 @@ public class Main extends Application {
 
 	public void agrandirSerpent(Serpent serpent, Pane root) {
 		int indice = serpent.getCorps().size(); // le nouvel indice le plus grand
-		MorceauCorps queue = serpent.getCorps().get(indice - 1); // je récupère la queue
+		MorceauCorps queue = serpent.getCorps().get(indice - 1); // je rï¿½cupï¿½re la queue
 		String directionQueue = queue.getDirection();
 		MorceauCorps newMorceau;
 
@@ -437,7 +438,7 @@ public class Main extends Application {
 		serpent.changeImage();
 		ajouterSerpent(serpent, root);
 
-		TextPommeMangee.setText("pomme mangée : 0");
+		TextPommeMangee.setText("pomme mangï¿½e : 0");
 		changerPlacerPomme(dimensions, lapomme, root, serpent);
 	}
 
@@ -480,7 +481,7 @@ public class Main extends Application {
 			MorceauCorps mc2 = (MorceauCorps) n2;
 			if (mc2.getIndice() != 0) {
 				if (mc2.intersects(rectangleCollision.getBoundsInLocal())) {
-					System.out.println("corps touché");
+					System.out.println("corps touchï¿½");
 					gameOver = true;
 					debut = false;
 					restart = false;
@@ -489,25 +490,25 @@ public class Main extends Application {
 		}
 
 		if (rectangleCollision.getY() < 0) {
-			System.out.println("touché haut");
+			System.out.println("touchï¿½ haut");
 			gameOver = true;
 			debut = false;
 			restart = false;
 		}
 		if (rectangleCollision.getY() > 600) {
-			System.out.println("touché bas");
+			System.out.println("touchï¿½ bas");
 			gameOver = true;
 			debut = false;
 			restart = false;
 		}
 		if (rectangleCollision.getX() < 0) {
-			System.out.println("touché gauche");
+			System.out.println("touchï¿½ gauche");
 			gameOver = true;
 			debut = false;
 			restart = false;
 		}
 		if (rectangleCollision.getX() > 600) {
-			System.out.println("touché droite");
+			System.out.println("touchï¿½ droite");
 			gameOver = true;
 			debut = false;
 			restart = false;
@@ -515,17 +516,17 @@ public class Main extends Application {
 
 		/*
 		 * switch (mc.getDirection()) { case "haut": if (mc.getY() < 0) {
-		 * System.out.println("touché haut"); gameOver = true; debut = false; restart =
+		 * System.out.println("touchï¿½ haut"); gameOver = true; debut = false; restart =
 		 * false; } break; case "bas": if (mc.getY() + 35 > 600) {
-		 * System.out.println("touché bas"); gameOver = true; debut = false; restart =
+		 * System.out.println("touchï¿½ bas"); gameOver = true; debut = false; restart =
 		 * false; }
 		 * 
 		 * break; case "gauche": if (mc.getX() < 0) {
-		 * System.out.println("touché gauche"); gameOver = true; debut = false; restart
+		 * System.out.println("touchï¿½ gauche"); gameOver = true; debut = false; restart
 		 * = false;
 		 * 
 		 * } break; case "droite": if (mc.getX() + 35 > 600) {
-		 * System.out.println("touché droite"); gameOver = true; debut = false; restart
+		 * System.out.println("touchï¿½ droite"); gameOver = true; debut = false; restart
 		 * = false; } break; }
 		 */
 
