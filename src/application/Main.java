@@ -42,11 +42,13 @@ public class Main extends Application {
 			AnchorPane root = new AnchorPane();
 			Text TextPommeMangee = new Text("pomme mangée : 0");
 			Text TextGameOver = new Text("GAME OVER");
-			TextPommeMangee.setX(250);
+			TextPommeMangee.setX(10);
 			TextPommeMangee.setY(25);
 			TextGameOver.setX(250);
 			TextGameOver.setY(300);
 			TextGameOver.setVisible(false);
+			
+			TextPommeMangee.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 10));
 
 			TextGameOver.setFont(Font.font("verdana", FontWeight.BOLD, FontPosture.REGULAR, 20));
 
@@ -69,7 +71,7 @@ public class Main extends Application {
 
 				decalageX += 40;
 
-				if (i % 15 == 0) {
+				if (i % 15 == 0 && i != 225) {
 					decalageX = 0;
 					decalageY += 40;
 					dimensions.add(decalageY);
@@ -91,6 +93,7 @@ public class Main extends Application {
 			serpent.changeImage();
 
 			Scene scene = new Scene(root, 600, 600);
+			primaryStage.setTitle("PROJET SNAKE IHM");
 			scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
 			primaryStage.setScene(scene);
 			primaryStage.show();
@@ -101,6 +104,7 @@ public class Main extends Application {
 			root.getChildren().add(lapomme);
 			root.getChildren().add(TextPommeMangee);
 			root.getChildren().add(TextGameOver);
+			
 
 			scene.setOnKeyPressed(e -> {
 
@@ -273,6 +277,9 @@ public class Main extends Application {
 							}
 
 							if (mc.intersects(lapomme.getBoundsInLocal())) { // intersection avec la pomme
+								if(pommeMangee < 222) {
+									
+								
 								changerPlacerPomme(dimensions, lapomme, root, serpent);
 								pommeMangee++;
 								if (pommeMangee > 1) {
@@ -281,6 +288,7 @@ public class Main extends Application {
 									TextPommeMangee.setText("pomme mangée : " + pommeMangee);
 								}
 								agrandirSerpent = true;
+								}
 
 							}
 
@@ -329,18 +337,8 @@ public class Main extends Application {
 		int y = (int) (Math.random() * dimensions.size());
 		boolean bonnePosition = true;
 
-		if (dimensions.get(y) != 0) {
-			lapomme.setY(dimensions.get(y) - 25);
-		} else {
-
-			lapomme.setY(dimensions.get(y) + 25);
-
-		}
-		if (dimensions.get(x) != 600) {
-			lapomme.setX(dimensions.get(x) + 15);
-		} else {
-			lapomme.setX(dimensions.get(x) - 15);
-		}
+		lapomme.setY(dimensions.get(y) + 15);
+		lapomme.setX(dimensions.get(x) + 15);
 
 		for (MorceauCorps n : serpent.getCorps()) {
 			MorceauCorps mc = (MorceauCorps) n;
@@ -355,16 +353,8 @@ public class Main extends Application {
 			y = (int) (Math.random() * dimensions.size());
 			bonnePosition = true;
 			
-			if (dimensions.get(y) != 0) {
-				lapomme.setY(dimensions.get(y) - 25);
-			} else {
-				lapomme.setY(dimensions.get(y) + 25);
-			}
-			if (dimensions.get(x) != 600) {
-				lapomme.setX(dimensions.get(x) + 15);
-			} else {
-				lapomme.setX(dimensions.get(x) - 15);
-			}
+			lapomme.setY(dimensions.get(y) + 15);
+			lapomme.setX(dimensions.get(x) + 15);
 
 			for (MorceauCorps n : serpent.getCorps()) {
 				MorceauCorps mc = (MorceauCorps) n;
@@ -374,6 +364,8 @@ public class Main extends Application {
 			}
 
 		}
+		//System.out.println("pomme : x -> "+x+"/ y -> "+y);
+		
 
 	}
 
